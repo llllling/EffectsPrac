@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 26
-  productGUID: bdc78013b780d9e428fab4c729027d9e
+  productGUID: 35999f72de2e9914eb1d27dbf2899f0c
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: ParticlePrac
+  productName: NatureEffects
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -768,14 +768,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: ParticlePrac
+  metroPackageName: NatureEffects
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: ParticlePrac
+  metroApplicationDescription: NatureEffects
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -844,10 +844,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: e8d3cf1d-533b-40c9-8973-990d15245bf6
+  cloudProjectId: 88846f3e-2aec-4e72-922d-2967d6401461
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: ParticlePrac
+  projectName: NatureEffects
   organizationId: k89900443
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
