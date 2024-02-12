@@ -54,12 +54,17 @@
 NatureEffects 폴더
 ## 화염 이펙트
 화염 이펙트를 제작하면서 조절한 값들 정리
-### 텍스처 임포트 설정(eff_aura1.png)
+
+### 1. fire1_add(화염)
+#### 텍스처 임포트 설정(eff_aura1.png)
 * Alpha Is Transparency > ON  : 투과와 비투과 부분의 경계에서 발생하는 노이즈를 줄여준다. 또한 섬네일 표시가 투과 이미지로 표시됨.
 * Wrap Mode > Clamp : 텍스처를 타일 위에 반복할 필요가 없다면 데이터를 가볍게 하기 위해 Clamp로 설정
-### fire1_add
+#### 머터리얼 설정 확인(eff_aura1_add)
+* Mobile/Particles/Additive
+#### 파티클 시스템에 머터리얼 설정
+* Render 모듈의 Material 속성에 eff_aura1_add 할당.
 #### Main 모듈
-* Start LifeTime
+* Start Lifetime
 * Start Speed
 * Start Size
 * Start Rotation
@@ -90,7 +95,11 @@ NatureEffects 폴더
 * 커브 표현 : 커브로 설정할 수 있는 것은 수명, 크기, 회전, 파티클의 발생 개수 등이 있음.
     * Size over Lifetime 모듈의 Size 커브를 위아래로 크게 변하게 만들면 빛이 반짝이는 효과를 만들 수 있다.
     * Emission 모듈의 Rate를 오른쪽 위로 오르는 커브로 만들면 파티클의 발생 개수가 점점 늘어나게 만들 수 있음.
-### par1_add(불똥 만들기)
+### 2. par1_add(불똥)
+#### 머터리얼 설정 확인(eff_par1_add)
+* Mobile/Particles/Additive
+#### 파티클 시스템에 머터리얼 설정
+* Render 모듈의 Material 속성에 eff_par1_add 할당.
 #### Main 모듈
 * Start Lifetime
 * Start Speed
@@ -106,3 +115,30 @@ NatureEffects 폴더
 * par1_add를 선택하고 Color over Lifetime 모듈의 Color를 위에서 생성한 Presets 그레이디언트 클릭해서 복사함.
 #### Size over Lifetime
 * Particle System Curves에서 오른쪽 아래로 내려가는 직선을 선택한다 > 파티클이 점점 작아지는 이펙트가 됨.
+
+### 3. smoke1_alpha(연기)
+#### 텍스처 임포트 설정(eff_smoke1.png)
+* Alpha Is Transparency > ON
+* Wrap Mode > Clamp
+#### 머터리얼 설정 확인(eff_smoke1_alpha)
+* Mobile/Particles/AlphaBlended
+#### 파티클 시스템에 머터리얼 설정
+* Render 모듈의 Material 속성에 eff_smoke1_alpha 할당.
+#### Main 모듈
+* Start Lifetime
+* Start Speed
+* Start Size
+* Start Rotation
+* Gravity Modifier
+* Start Color
+#### Emission
+* Rate > Time
+#### Shape
+* Radius
+#### Rotation over Lifetime 모듈
+* Angular Velocity > Random Between Two Constants
+#### Color over Lifetime 모듈
+* fire1_add를 기반으로 복사한 Presets의 색상 그레이디언트 사용
+* 연기는 연소된 후에 남는 것이므로 이런 것을 표현하기 위해> 복사한 그레이디언트의 제일 오른쪽 Color를 (70, 0, 0)으로 변경
+#### Size over Lifetime
+* Particle System Curves에서 오른쪽 위로 향하는 직선을 선택한다. 왼쪽에 있는 키를 드래그해서 0.600 위치로 옮김 > 점점 커지게 
