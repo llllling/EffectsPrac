@@ -58,7 +58,7 @@ NatureEffects 폴더
 * Alpha Is Transparency > ON  : 투과와 비투과 부분의 경계에서 발생하는 노이즈를 줄여준다. 또한 섬네일 표시가 투과 이미지로 표시됨.
 * Wrap Mode > Clamp : 텍스처를 타일 위에 반복할 필요가 없다면 데이터를 가볍게 하기 위해 Clamp로 설정
 ### fire1_add
-#### Mian 모듈
+#### Main 모듈
 * Start LifeTime
 * Start Speed
 * Start Size
@@ -81,8 +81,28 @@ NatureEffects 폴더
 #### Color over Lifetime 모듈
 * Color 포인트 4개 추가해서 그레이디언트 만듬 > 색상 사각형 왼쪽 아래에 있는 포인트 아이콘
 * 페이드인/페이드아웃 설정 > 색상 사각형 왼쪽 위에 있는 포인트 아이콘(Alpha 값 변경)
- 
 ##### 꿀팁
 * 그레디언트에서 중요한 것
     * 화염 이펙트를 만들 때는 [밝은 노란색] > [노란색] > [주황색] > [붉은색]으로 색을 표현함.
     * 이펙트를 만들 때는 항상 표현하려는 대상의 색상이 어떻게 변화하는지 참고 동영상 또는 사진을 고나찰해야 한다. 그레이디언트를 잘 만들수록 더 사실적인 이펙트를 만들 수 있음
+#### Size over Lifetime
+* size > 커브 편집 화면 열기(Inspector 뷰 맨 아래 부분에 [Particle System Curves] 클릭)
+* 커브 표현 : 커브로 설정할 수 있는 것은 수명, 크기, 회전, 파티클의 발생 개수 등이 있음.
+    * Size over Lifetime 모듈의 Size 커브를 위아래로 크게 변하게 만들면 빛이 반짝이는 효과를 만들 수 있다.
+    * Emission 모듈의 Rate를 오른쪽 위로 오르는 커브로 만들면 파티클의 발생 개수가 점점 늘어나게 만들 수 있음.
+### par1_add(불똥 만들기)
+#### Main 모듈
+* Start Lifetime
+* Start Speed
+* Start Size 
+* Gravity Modifier 
+#### Emission
+* Rate > Time > 100 : 1초동안 100개의 파티클을 방출
+#### Shape
+* Angle > 20 : 방출 각도 조금 작게 변경 
+* Radius > 0.2 : 방출 범위를 조금 작게 변경
+#### Color over Lifetime 모듈
+* fire1_add의 Color over Lifetime 모듈의 Color 클릭 > Presets [New] 클릭 > 그레이디언트 프리셋이 생서됨.
+* par1_add를 선택하고 Color over Lifetime 모듈의 Color를 위에서 생성한 Presets 그레이디언트 클릭해서 복사함.
+#### Size over Lifetime
+* Particle System Curves에서 오른쪽 아래로 내려가는 직선을 선택한다 > 파티클이 점점 작아지는 이펙트가 됨.
