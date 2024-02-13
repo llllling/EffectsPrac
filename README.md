@@ -50,9 +50,19 @@
     * 가산 반투명 머터리얼 : 렌더링할 그림을 가산(색을 추가해서 밝게 만듦)하는 설정이다.
     * 감산 반투명 머터리얼 : 렌더링할 그림을 감산(색을 빼서 어둡게 만듦)하는 설정이다.
 
-# 자연 표현
+## 자연 표현 이펙트 연습
 NatureEffects 폴더
-## 화염 이펙트
+### 프로젝트 진행하면서 알게 된 것들 
+#### Sorting Fudge
+* 파티클들의 렌더링 순서를 조절하는 속성.
+* 숫자가 작을수록 화면의 앞에 렌더링 된다.
+* 예를 들어, 반투명(Alpha Blended) 머터리얼에 Sorting Fudge 값을 "0"으로 설정한 *파티클A*와 Sorting Fudge 값이 "1"인 *파티클B*가 씬 내부에 있다면, *파티클A*가 *파티클B*보다 앞에 렌더링 됨.
+    * 앞에 렌더링 됨 == 화면에서 보면 앞에 출력됨
+    * 참고로 모두 가산(Additive) 머터리얼을 사용하면 Sorting Fudge를 바꿔도 파티클의 외관에 큰 차이 없음!
+    * 따라서 <span style="color: black; background-color:yellow;">반투명 머터리얼로 만든 머터리얼은 Sorting Fudge 설정으로 렌더링 순서를 설정하는 것이 굉장히 중요함.</span>
+<details>
+<summary><h2> 화염 이펙트 </h2></summary>
+<div>
 화염 이펙트를 제작하면서 조절한 값들 정리
 
 ### 1. fire1_add(화염)
@@ -90,7 +100,7 @@ NatureEffects 폴더
 * 그레디언트에서 중요한 것
     * 화염 이펙트를 만들 때는 [밝은 노란색] > [노란색] > [주황색] > [붉은색]으로 색을 표현함.
     * 이펙트를 만들 때는 항상 표현하려는 대상의 색상이 어떻게 변화하는지 참고 동영상 또는 사진을 고나찰해야 한다. 그레이디언트를 잘 만들수록 더 사실적인 이펙트를 만들 수 있음
-#### Size over Lifetime
+#### Size over Lifetime 모듈
 * size > 커브 편집 화면 열기(Inspector 뷰 맨 아래 부분에 [Particle System Curves] 클릭)
 * 커브 표현 : 커브로 설정할 수 있는 것은 수명, 크기, 회전, 파티클의 발생 개수 등이 있음.
     * Size over Lifetime 모듈의 Size 커브를 위아래로 크게 변하게 만들면 빛이 반짝이는 효과를 만들 수 있다.
@@ -105,15 +115,15 @@ NatureEffects 폴더
 * Start Speed
 * Start Size 
 * Gravity Modifier 
-#### Emission
+#### Emission 모듈
 * Rate > Time > 100 : 1초동안 100개의 파티클을 방출
-#### Shape
+#### Shape 모듈
 * Angle > 20 : 방출 각도 조금 작게 변경 
 * Radius > 0.2 : 방출 범위를 조금 작게 변경
 #### Color over Lifetime 모듈
 * fire1_add의 Color over Lifetime 모듈의 Color 클릭 > Presets [New] 클릭 > 그레이디언트 프리셋이 생서됨.
 * par1_add를 선택하고 Color over Lifetime 모듈의 Color를 위에서 생성한 Presets 그레이디언트 클릭해서 복사함.
-#### Size over Lifetime
+#### Size over Lifetime 모듈
 * Particle System Curves에서 오른쪽 아래로 내려가는 직선을 선택한다 > 파티클이 점점 작아지는 이펙트가 됨.
 
 ### 3. smoke1_alpha(연기)
@@ -131,14 +141,74 @@ NatureEffects 폴더
 * Start Rotation
 * Gravity Modifier
 * Start Color
-#### Emission
+#### Emission 모듈
 * Rate > Time
-#### Shape
+#### Shape 모듈
 * Radius
 #### Rotation over Lifetime 모듈
 * Angular Velocity > Random Between Two Constants
 #### Color over Lifetime 모듈
 * fire1_add를 기반으로 복사한 Presets의 색상 그레이디언트 사용
 * 연기는 연소된 후에 남는 것이므로 이런 것을 표현하기 위해> 복사한 그레이디언트의 제일 오른쪽 Color를 (70, 0, 0)으로 변경
-#### Size over Lifetime
+#### Size over Lifetime 모듈
 * Particle System Curves에서 오른쪽 위로 향하는 직선을 선택한다. 왼쪽에 있는 키를 드래그해서 0.600 위치로 옮김 > 점점 커지게 
+</div>
+</details>
+
+<details>
+<summary><h2> 물 이펙트 </h2></summary>
+<div>
+
+### 1. water1_add(물)
+물보라가 강하게 위로 발생한 뒤 낙하하며 사라지는 이펙트
+#### 파티클 시스템에 머터리얼 설정
+* Render 모듈의 Material 속성에 eff_water1_add 할당.
+#### Main 모듈
+* Start Lifetime
+* Start Speed
+* Start Size
+* Start Rotation
+* Gravity Modifier
+#### Emission 모듈
+* Rate > Time
+#### Shape 모듈
+* Angle : 물보라가 너무 넓게 퍼지므로 방출 각도를 줄인다.
+* Radius : 물보라가 너무 넓게 퍼지므로 방출 범위를 줄인다.
+#### Rotation over Lifetime 모듈
+* Angular Velocity : 물보라가 너무 단조로우므로 무작위로 회전시킨다.
+#### Transform 설정
+*  Rotation > (-90, 0, 0) : 옆으로 낙하하던 것을 위로 향하게
+#### Color over Lifetime 모듈
+* 밝은 하늘색 > 하늘색 > 파란색 그레이디언트 만들기
+* 페이드아웃해서 사라지도록 Alpha 조정
+#### Size over Lifetime 모듈
+* Particle System Curves에서 오른쪽 위로 향하는 직선을 선택한다. 왼쪽에 있는 키를 드래그해서 0.350 위치로 옮김  
+    * 물보라 파티클이 생성될 때는 작고, 시간이 경과하면 점점 커지도록.
+    * 즉, 물보라가 낙하하면서 점점 커지고, 사라지게 된다.
+### 2. smoke1_alpha(물안개)
+#### 파티클 시스템에 머터리얼 설정
+* Render 모듈의 Material 속성에 eff_smoke1_add 할당.
+* Sorting Fudge > 50 : 가산 표시 물체보다 뒤에 렌더링 해야 하므로
+#### Main 모듈
+* Start Lifetime
+* Start Speed
+* Start Size
+* Start Rotation
+* Gravity Modifier
+* Start Color
+#### Emission 모듈
+* Rate > Time
+#### Shape 모듈
+* Angle : 물안개가 너무 넓게 퍼지므로 방출 각도를 줄인다.
+* Radius : 물안개가 너무 넓게 퍼지므로 방출 범위를 줄인다.
+#### Rotation over Lifetime 모듈
+* Angular Velocity : 물안개가 너무 단조로우므로 무작위로 회전시킨다.
+#### Transform 설정
+*  Rotation > (-90, 0, 0) : 옆으로 낙하하던 것을 위로 향하게
+#### Color over Lifetime 모듈
+#### Size over Lifetime 모듈
+* Particle System Curves에서 오른쪽 위로 향하는 직선을 선택한다. 왼쪽에 있는 키를 드래그해서 0.350 위치로 옮김  
+    * 물안개 파티클이 생성될 때는 작고, 시간이 경과하면 점점 커지도록.
+    * 즉, 물안개 낙하하면서 점점 커지고, 사라지게 된다.
+</div>
+</details>
