@@ -53,13 +53,47 @@
 ## 자연 표현 이펙트 연습
 NatureEffects 폴더
 ### 프로젝트 진행하면서 알게 된 것들 
-#### Sorting Fudge
+#### Sorting Fudge 속성
 * 파티클들의 렌더링 순서를 조절하는 속성.
 * 숫자가 작을수록 화면의 앞에 렌더링 된다.
 * 예를 들어, 반투명(Alpha Blended) 머터리얼에 Sorting Fudge 값을 "0"으로 설정한 *파티클A*와 Sorting Fudge 값이 "1"인 *파티클B*가 씬 내부에 있다면, *파티클A*가 *파티클B*보다 앞에 렌더링 됨.
     * 앞에 렌더링 됨 == 화면에서 보면 앞에 출력됨
     * 참고로 모두 가산(Additive) 머터리얼을 사용하면 Sorting Fudge를 바꿔도 파티클의 외관에 큰 차이 없음!
     * 따라서 <span style="color: black; background-color:yellow;">반투명 머터리얼로 만든 머터리얼은 Sorting Fudge 설정으로 렌더링 순서를 설정하는 것이 굉장히 중요함.</span>
+#### Render Mode
+* Render 모듈의 Render Mode를 사용하면 파티클의 형태를 설정할 수 있다.
+* 일반적으로 Billboard와 Stretched Billboard만으로도 다양한 이펙트를 표현할 수 있다.
+<table>
+    <tr>
+        <th>선택지</th>
+        <th>설명</th>
+    </tr>
+    <tr>
+        <td>Billboard</td>
+        <td>항상 카메라 방향을 향하는 정사각형 모양의 폴리곤</td>
+    </tr>
+    <tr>
+        <td>Stretched Billboard</td>
+        <td>크기를 변경할 수 있는 사각형 폴리곤. 직사각형의 외형을 만들 때 사용함.</td>
+    </tr>
+    <tr>
+        <td>Horizontal Billboard</td>
+        <td>XZ축과 평행한 방향의 사각형 폴리곤</td>
+    </tr>
+    <tr>
+        <td>Vertical Billboard</td>
+        <td>Y축과 방향으로 똑바로 서서 항상 카메라를 향하는 사각형 폴리곤</td>
+    </tr>
+    <tr>
+        <td>Mesh</td>
+        <td>지정한 3D모델을 파티클로 사용함</td>
+    </tr>
+</table>
+
+* Stretched Billboard 속성
+    * 충격파, 히트 효과, 빛줄기, 불꽃 등의 가느다란 외형의 이펙트를 표현할 때 유용하게 사용할 수 있는 설정임.
+    * 하지만 꽤나 다루기 힘든 속성이라 잘 다루려면 반복 조정과 경험이 필요함.
+    * Main 모듈의 Start Speed, Start Size를 변경하거나, Shape 모듈의 Radius를 변경하거나, Size over Lifetime 커브 등의 여러 속성을 함께 변경하면서 원하는 외형을 잡아라.
 <details>
 <summary><h2> 화염 이펙트 </h2></summary>
 <div>
@@ -210,5 +244,53 @@ NatureEffects 폴더
 * Particle System Curves에서 오른쪽 위로 향하는 직선을 선택한다. 왼쪽에 있는 키를 드래그해서 0.350 위치로 옮김  
     * 물안개 파티클이 생성될 때는 작고, 시간이 경과하면 점점 커지도록.
     * 즉, 물안개 낙하하면서 점점 커지고, 사라지게 된다.
+</div>
+</details>
+
+<details>
+<summary><h2> 폭포 이펙트 </h2></summary>
+<div>
+
+### 1. water1_add(폭포)
+#### 파티클 시스템에 머터리얼 설정
+* Render 모듈의 Material 속성에 eff_water1_add 할당.
+#### 파티클 그래픽 이미지를 직사각형으로 변경
+* Render 모듈 > Render Mode > Stretched Billboard로 설정 > Length Scale 2로 변경 => Billboard가 조금 길어짐
+#### Main 모듈
+* Start Lifetime
+* Start Speed
+* Start Size
+* Gravity Modifier
+#### Emission 모듈
+* Rate > Time > 200 : 발생량을 늘려서 물보라를 강하게 만든다.
+#### Shape 모듈
+* Angle  : 물보라가 너무 넓게 퍼지므로 방출 각도를 줄임.
+* Radius : 물보라가 너무 넓게 퍼지므로 방출 범위를 줄임.
+#### Color over Lifetime 모듈
+#### Size over Lifetime 모듈
+* Particle System Curves에서 오른쪽 위로 향하는 직선을 선택한다. 왼쪽에 있는 키를 드래그해서 0.77 위치로 옮김  
+    * 물보라 파티클이 생성될 때는 작고, 시간이 경과하면 점점 커지도록.
+    * 즉, 낙하하면서 점점 커지고, 사라지게 된다.
+### 2. smoke1_alpha(물안개)
+#### 파티클 시스템에 머터리얼 설정
+* Render 모듈의 Material 속성에 eff_smoke1_add 할당.
+* Sorting Fudge > 50 : 가산 표시 물체보다 뒤에 렌더링 해야 하므로
+#### Main 모듈
+* Start Lifetime
+* Start Speed
+* Start Size
+* Start Rotation
+* Gravity Modifier
+* Start Color
+#### Emission 모듈
+* Rate > Time
+#### Shape 모듈
+* Angle 
+* Radius
+#### Rotation over Lifetime 모듈
+* Angular Velocity : 물안개가 너무 단조로우므로 무작위로 회전시킨다.
+#### Color over Lifetime 모듈
+#### Size over Lifetime 모듈
+* Particle System Curves에서 오른쪽 위로 향하는 직선을 선택한다. 왼쪽에 있는 키를 드래그해서 0.77 위치로 옮김  
 </div>
 </details>
