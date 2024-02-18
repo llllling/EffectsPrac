@@ -94,6 +94,46 @@ NatureEffects 폴더
     * 충격파, 히트 효과, 빛줄기, 불꽃 등의 가느다란 외형의 이펙트를 표현할 때 유용하게 사용할 수 있는 설정임.
     * 하지만 꽤나 다루기 힘든 속성이라 잘 다루려면 반복 조정과 경험이 필요함.
     * Main 모듈의 Start Speed, Start Size를 변경하거나, Shape 모듈의 Radius를 변경하거나, Size over Lifetime 커브 등의 여러 속성을 함께 변경하면서 원하는 외형을 잡아라.
+#### Shape 모듈의 형태
+* Shape 모듈로 파티클의 발생 범위와 방향을 조절할 수 있다.
+* 폭발 이펙트 등을 만들 때는 모든 방향으로 방출하는 Sphere를 선택한다.
+* 방향성이 있는 충격파 이펙트 등을 만들 때는 Cone을 선택함.
+
+<table>
+    <tr>
+        <th>선택지</th>
+        <th>설명</th>
+    </tr>
+    <tr>
+        <td>Sphere</td>
+        <td>구 형태, 모든 방향으로 파티클을 방출함</td>
+    </tr>
+    <tr>
+        <td>HemiSphere</td>
+        <td>반구 형태. 반구 방향으로 파티클 방출함</td>
+    </tr>
+    <tr>
+        <td>Cone</td>
+        <td>원뿔 형태. 각도를 변경할 수 있으며, 원뿔 아래쪽으로 파티클을 방출함</td>
+    </tr>
+    <tr>
+        <td>Box</td>
+        <td>박스 형태. 박스 크기를 변경할 수 있으며, 영역 전체에 파티클을 방출함</td>
+    </tr>
+    <tr>
+        <td>Mesh</td>
+        <td>지정한 메시 형태. 원하는 모델 형태로 파티클을 방출함</td>
+    </tr>
+    <tr>
+        <td>Circle</td>
+        <td>원 형태. 지정한 각도의 원 방향으로 파티클을 방출함</td>
+    </tr>
+    <tr>
+        <td>Edge</td>
+        <td>선. 선을 기준으로 파티클을 방출함</td>
+    </tr>
+</table>
+
 <details>
 <summary><h2> 화염 이펙트 </h2></summary>
 <div>
@@ -292,5 +332,36 @@ NatureEffects 폴더
 #### Color over Lifetime 모듈
 #### Size over Lifetime 모듈
 * Particle System Curves에서 오른쪽 위로 향하는 직선을 선택한다. 왼쪽에 있는 키를 드래그해서 0.77 위치로 옮김  
+</div>
+</details>
+
+<details>
+<summary><h2> 비 이펙트 </h2></summary>
+<div>
+
+### 1. rain1_alpha(비)
+#### 머터리얼 설정
+* Render 모듈의 Material 속성에 eff_par1_alpha 할당.
+* Render 모듈 > Render Mode > Stretched Billboard로 설정
+    * Length Scale > 0
+    * Speed Scale > 0.3
+    * 파티클의 속도에 따라 파티클의 길이가 변경됨.
+#### Transform 설정
+* Positoin
+* Rotation
+#### Main 모듈
+* Start Lifetime
+* Start Speed
+* Start Size
+* Gravity Modifier
+* Start Color
+#### Emission 모듈
+* Rate > Time
+#### Shape 모듈
+* Shape > Box 
+    * Box Scale : x(10), y(10), z(2)
+#### Velocity over Lifetime 모듈
+* 무작위로 값을 설정할 것이므로 Random Between Two Contants로 변경
+* X(-1~1), Y(-1~1), Z(0) => X축과 Y축의 속도가 -1부터 1 사이의 범위에서 무작위로 설정됨. 따라서 비가 임의 방향으로 떨어짐.
 </div>
 </details>
