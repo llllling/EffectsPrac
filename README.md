@@ -50,8 +50,6 @@
     * 가산 반투명 머터리얼 : 렌더링할 그림을 가산(색을 추가해서 밝게 만듦)하는 설정이다.
     * 감산 반투명 머터리얼 : 렌더링할 그림을 감산(색을 빼서 어둡게 만듦)하는 설정이다.
 
-## 자연 표현 이펙트 연습
-NatureEffects 폴더
 ### 프로젝트 진행하면서 알게 된 것들 
 #### Scaling Mode 속성
 * Local : 자신의 Transform 스케일을 상속
@@ -143,6 +141,8 @@ NatureEffects 폴더
     </tr>
 </table>
 
+## 자연 표현 이펙트 연습
+NatureEffects 폴더
 <details>
 <summary><h2> 화염 이펙트 </h2></summary>
 <div>
@@ -399,7 +399,7 @@ NatureEffects 폴더
     * Box Scale : x(10), y(10), z(2)
 #### Velocity over Lifetime 모듈
 * 무작위로 값을 설정할 것이므로 Random Between Two Contants로 변경
-* X(-0.5~0.5), Y(-0.5~0.5), Z(0) => X축과 Y축의 속도가 -1부터 1 사이의 범위에서 무작위로 설정됨. 따라서 눈이 임의 방향으로 떨어짐.
+* X(-0.5~0.5), Y(-0.5~0.5), Z(0) => X축과 Y축의 속도가 -0.5부터 0.5 사이의 범위에서 무작위로 설정됨. 따라서 눈이 임의 방향으로 떨어짐.
 #### Size over Lifetime 모듈
 * Particle System Curves에서 오른쪽 아래로 향하는 직선을 선택한다. 
 ### 2. snow1_alpha(다른 눈)
@@ -424,9 +424,62 @@ NatureEffects 폴더
 #### Rotation over Lifetime
 * Angular Velocity > -360 ~ 360 : 눈의 결정이 무작위로 회전하면서 떨어지게
 #### Velocity over Lifetime 모듈
-* 무작위로 값을 설정할 것이므로 Random Between Two Contants로 변경
-* X(-0.5~0.5), Y(-0.5~0.5), Z(0) => X축과 Y축의 속도가 -1부터 1 사이의 범위에서 무작위로 설정됨. 따라서 눈이 임의 방향으로 떨어짐.
+* X(-0.5~0.5), Y(-0.5~0.5), Z(0)
 #### Size over Lifetime 모듈
 * Particle System Curves에서 오른쪽 아래로 향하는 직선을 선택한다. 
+</div>
+</details>
+
+<details>
+<summary><h2> 벚꽃 이펙트 </h2></summary>
+<div>
+
+### 1. sakura1_alpha(벚꽃)
+#### 머터리얼 설정
+* Render 모듈의 Material 속성에 eff_petal1_alpha 할당.
+#### Transform 설정
+* Positoin
+* Rotation
+#### Main 모듈
+* Start Lifetime
+* Start Speed
+* Start Size
+* Start Rotation
+* Gravity Modifier
+* Start Color
+#### Emission 모듈
+* Rate > Time
+#### Shape 모듈
+* Shape > Box 
+    * Box Scale : x(10), y(10), z(2)
+#### Velocity over Lifetime 모듈
+* 무작위로 값을 설정할 것이므로 Random Between Two Contants로 변경
+* X(-1~1), Y(-1~1), Z(0) => X축과 Y축의 속도가 -1부터 1 사이의 범위에서 무작위로 설정됨. 따라서 벚꽃이 임의 방향으로 떨어짐.
+#### Size over Lifetime 모듈
+* Particle System Curves에서 오른쪽 아래로 향하는 직선을 선택한다. 
+### 2. snow1_alpha(다른 눈)
+#### 머터리얼 설정
+* Render 모듈의 Material 속성에 eff_snow1_alpha 할당.
+#### Transform 설정
+* Positoin
+* Rotation
+#### Main 모듈
+* Prewarm > on
+* Start Lifetime
+* Start Speed
+* Start Size
+* Start Rotation
+* Gravity Modifier
+* Start Color
+#### Emission 모듈
+* Rate > Time
+#### Shape 모듈
+* Shape > Box 
+    * Box Scale : x(10), y(10), z(2)
+#### Rotation over Lifetime
+* Angular Velocity > -360 ~ 360 : 무작위로 회전하면서 떨어지게
+#### Velocity over Lifetime 모듈
+* 무작위로 값을 설정할 것이므로 Random Between Two Contants로 변경
+* X(-0.5~0.5), Y(-0.5~0.5), Z(0) => X축과 Y축의 속도가 -1부터 1 사이의 범위에서 무작위로 설정됨. 따라서 눈이 임의 방향으로 떨어짐.
 </div>
 </details>
