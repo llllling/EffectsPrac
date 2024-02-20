@@ -365,3 +365,33 @@ NatureEffects 폴더
 * X(-1~1), Y(-1~1), Z(0) => X축과 Y축의 속도가 -1부터 1 사이의 범위에서 무작위로 설정됨. 따라서 비가 임의 방향으로 떨어짐.
 </div>
 </details>
+
+<details>
+<summary><h2> 눈 이펙트 </h2></summary>
+<div>
+
+### 1. par1_alpha(눈)
+#### 머터리얼 설정
+* Render 모듈의 Material 속성에 eff_par1_alpha 할당.
+#### Transform 설정
+* Positoin
+* Rotation
+#### Main 모듈
+* Prewarm > on
+* Start Lifetime
+* Start Speed
+* Start Size
+* Gravity Modifier
+* Start Color
+#### Emission 모듈
+* Rate > Time
+#### Shape 모듈
+* Shape > Box 
+    * Box Scale : x(10), y(10), z(2)
+#### Velocity over Lifetime 모듈
+* 무작위로 값을 설정할 것이므로 Random Between Two Contants로 변경
+* X(-0.5~0.5), Y(-0.5~0.5), Z(0) => X축과 Y축의 속도가 -1부터 1 사이의 범위에서 무작위로 설정됨. 따라서 눈이 임의 방향으로 떨어짐.
+#### Size over Lifetime 모듈
+* Particle System Curves에서 오른쪽 아래로 향하는 직선을 선택한다.  
+</div>
+</details>
