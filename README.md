@@ -483,3 +483,28 @@ NatureEffects 폴더
 * X(-0.5~0.5), Y(-0.5~0.5), Z(0) => X축과 Y축의 속도가 -1부터 1 사이의 범위에서 무작위로 설정됨. 따라서 눈이 임의 방향으로 떨어짐.
 </div>
 </details>
+
+<details>
+<summary><h2> 흐르는 별 이펙트 </h2></summary>
+<div>
+
+### 1. parline1_alpha
+#### 머터리얼 설정
+* Render 모듈의 Material 속성에 eff_parline1_alpha 할당.
+* Render 모듈 > Render Mode > Stretched Billboard로 설정 > Length Scale 40로 변경 => Billboard가 길어짐
+#### Transform 설정
+* Rotation
+#### Main 모듈
+* Start Lifetime
+* Start Speed
+* Start Size
+* Start Color
+
+#### Shape 모듈
+* Angle > 0 : 평행하게 날아가도록 하기 위해
+* Radius
+#### Color over Lifetime 모듈
+#### Size over Lifetime 모듈
+* Particle System Curves에서 오른쪽 위로 향하는 직선을 선택한다. => 점점 커지게
+</div>
+</details>
