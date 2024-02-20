@@ -392,6 +392,32 @@ NatureEffects 폴더
 * 무작위로 값을 설정할 것이므로 Random Between Two Contants로 변경
 * X(-0.5~0.5), Y(-0.5~0.5), Z(0) => X축과 Y축의 속도가 -1부터 1 사이의 범위에서 무작위로 설정됨. 따라서 눈이 임의 방향으로 떨어짐.
 #### Size over Lifetime 모듈
-* Particle System Curves에서 오른쪽 아래로 향하는 직선을 선택한다.  
+* Particle System Curves에서 오른쪽 아래로 향하는 직선을 선택한다. 
+### 2. snow1_alpha(다른 눈)
+#### 머터리얼 설정
+* Render 모듈의 Material 속성에 eff_snow1_alpha 할당.
+#### Transform 설정
+* Positoin
+* Rotation
+#### Main 모듈
+* Prewarm > on
+* Start Lifetime
+* Start Speed
+* Start Size
+* Start Rotation
+* Gravity Modifier
+* Start Color
+#### Emission 모듈
+* Rate > Time
+#### Shape 모듈
+* Shape > Box 
+    * Box Scale : x(10), y(10), z(2)
+#### Rotation over Lifetime
+* Angular Velocity > -360 ~ 360 : 눈의 결정이 무작위로 회전하면서 떨어지게
+#### Velocity over Lifetime 모듈
+* 무작위로 값을 설정할 것이므로 Random Between Two Contants로 변경
+* X(-0.5~0.5), Y(-0.5~0.5), Z(0) => X축과 Y축의 속도가 -1부터 1 사이의 범위에서 무작위로 설정됨. 따라서 눈이 임의 방향으로 떨어짐.
+#### Size over Lifetime 모듈
+* Particle System Curves에서 오른쪽 아래로 향하는 직선을 선택한다. 
 </div>
 </details>
