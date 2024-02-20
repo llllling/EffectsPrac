@@ -53,6 +53,15 @@
 ## 자연 표현 이펙트 연습
 NatureEffects 폴더
 ### 프로젝트 진행하면서 알게 된 것들 
+#### Scaling Mode 속성
+* Local : 자신의 Transform 스케일을 상속
+    * Transform 스케일을 1 > 2 로 변경 시 파티클 시스템 전체의 크기가 2배가 됨.
+* Hierarchy : 부모와 자신의 Transform 스케일 상속
+    * 부모 GameObject와 파티클 시스템 사진의 Transform 스케일을 함께 곱하게 됨. 
+    * Transform 스케일을 1 > 2 로 변경 시 부모 Transform 스케일 2배, 자식 Transform 스케일 2배로하면 파티클 시스템 전체의 스케일이 4배가 됨.
+* Shape : 자신의 Transform 스케일을 Shape 크기에만 상속
+    * Transform 스케일을 2배로 해도 이펙트 입자의 크기는 변하지 않고 Shape 크기만 변하므로 방출 범위만 넓어짐.
+
 #### Sorting Fudge 속성
 * 파티클들의 렌더링 순서를 조절하는 속성.
 * 숫자가 작을수록 화면의 앞에 렌더링 된다.
