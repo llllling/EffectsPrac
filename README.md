@@ -508,3 +508,70 @@ NatureEffects 폴더
 * Particle System Curves에서 오른쪽 위로 향하는 직선을 선택한다. => 점점 커지게
 </div>
 </details>
+
+
+<details>
+<summary><h2> 바람 이펙트 </h2></summary>
+<div>
+
+### 1. wind1_alpha(회오리)
+#### 머터리얼 설정
+* Render 모듈의 Material 속성에 eff_windline1_add 할당.
+* Render Mode > Mesh로 설정 > twist 선택 
+#### Main 모듈
+* Start Lifetime
+* Start Speed
+* Start Size
+* Start Rotation
+* Gravity Modifier
+* Start Color
+#### Emission 모듈
+* Rate > Time
+#### Shape 모듈
+* 비활성화 > 파티클이 한점에서 발생하게 변경됨
+#### Color over Lifetime 모듈
+#### Size over Lifetime 모듈
+* Particle System Curves에서 오른쪽 위로 향하는 직선을 선택 > 왼쪽 key 값 0.456
+#### Rotation over Lifetime
+* Angular Velocity > -500 ~ 500 : 회오리가 임의 범위만큼 회전하게
+### 2. smoke_alpha(원뿔 모양 연기)
+#### 머터리얼 설정
+* Render 모듈의 Material 속성에 eff_smoke1_alpha 할당.
+* Sorting Fudege > 50
+#### Main 모듈
+* Start Lifetime
+* Start Speed
+* Start Size
+* Start Rotation
+* Gravity Modifier
+* Start Color
+#### Emission 모듈
+* Rate > Time
+#### Shape 모듈
+* Angle
+* Radius
+#### Color over Lifetime 모듈
+#### Size over Lifetime 모듈
+* Particle System Curves에서 오른쪽 위로 향하는 직선을 선택 > 왼쪽 key 값 0.75
+#### Rotation over Lifetime
+* Angular Velocity 
+### 3. par1_alpha(흙먼지)
+#### 머터리얼 설정
+* Render 모듈의 Material 속성에 eff_par1_alpha 할당.
+* Sorting Fudege > 50
+#### Main 모듈
+* Start Lifetime
+* Start Speed
+* Start Size
+* Start Color
+#### Emission 모듈
+* Rate > Time
+#### Shape 모듈
+* Angle
+* Radius
+#### Color over Lifetime 모듈
+#### Size over Lifetime 모듈
+* Particle System Curves에서 오른쪽 아래로 향하는 직선을 선택
+
+</div>
+</details>
