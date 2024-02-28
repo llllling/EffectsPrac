@@ -633,3 +633,26 @@ CharacterEffect 폴더
 * 오른쪽 위로 향하는 직선, 왼쪽 key 값 0.746
 </div>
 </details>
+<details>
+<summary><h2> 스피드선 이펙트 </h2></summary>
+<div>
+
+### 1. parline1_alpha
+#### 머터리얼 설정
+* Render 모듈의 Material 속성에 eff_par1_alpha 할당.
+* Stretched Billboard > Length Scale(1000)
+#### Main 모듈
+* Start Lifetime
+* Start Speed
+* Start Size
+#### Emission 모듈
+* Rate > Time
+#### Shape 모듈
+* Angle > 0 : 평행하게  
+* Radius
+#### Transform 설정
+* Eff_SpeedLine의 Transform 변경
+#### Size over Lifetime 모듈
+* 오른쪽 아래로 향하는 직선
+</div>
+</details>
