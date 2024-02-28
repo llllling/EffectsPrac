@@ -148,6 +148,7 @@
     * 텍스처는 평면 또는 메시 모델에 적용해서 사용한다. 
     * 이때 텍스처를 어떻게 평면 또는 메시의 어떤 위치에 추가할지를 나타내는 정보를 UV 좌표라고 함.
 * UV 스크롤을 사용하면 다양한 이펙트 표현할 수 있다.
+    * UV 스크롤을 사용하면 흐르는 움직임을 표현할 수 있다.
 ```c#
 public class UvScroll : MonoBehaviour {
 	
@@ -640,7 +641,8 @@ CharacterEffect 폴더
 ### 1. parline1_alpha
 #### 머터리얼 설정
 * Render 모듈의 Material 속성에 eff_par1_alpha 할당.
-* Stretched Billboard > Length Scale(1000)
+* Stretched Billboard
+* Length Scale > 1000
 #### Main 모듈
 * Start Lifetime
 * Start Speed
@@ -654,5 +656,68 @@ CharacterEffect 폴더
 * Eff_SpeedLine의 Transform 변경
 #### Size over Lifetime 모듈
 * 오른쪽 아래로 향하는 직선
+</div>
+</details>
+<details>
+<summary><h2> 제트 분사 이펙트 </h2></summary>
+<div>
+
+### 1. par1_add(엔진 연소 빛)
+#### 머터리얼 설정
+* Render 모듈의 Material 속성에 eff_par1_add 할당.
+* Stretched Billboard
+* Sorting Fudge > -200 : 반투명 이펙트를 함께 사용함으로 반투명 이펙트보다 앞에 렌더링 될 수 있게
+#### Main 모듈
+* Start Lifetime
+* Start Speed
+* Start Size
+* Start Color
+#### Emission 모듈
+* Rate > Time
+#### Shape 모듈
+* 체크 해제 : 한 점에서 방출되게 만들기 위해
+#### Color over Lifetime 모듈
+* Alpha  => 페이드아웃하며 사라지도록
+    * 255, 0%
+    * 0, 100%
+#### Transform 설정
+* 부모 Eff_Jet position, rotation 변경
+* par1_add position 변경
+#### Size over Lifetime 모듈
+* 오른쪽 아래로 향하는 곡선
+
+### 2. par2_alpha(불꽃)
+#### 머터리얼 설정
+* Render 모듈의 Material 속성에 eff_par1_alpha 할당.
+* Sorting Fudge > -50 
+#### Main 모듈
+* Start Lifetime
+* Start Speed
+* Start Size
+* Start Color
+#### Emission 모듈
+* Rate > Time
+#### Shape 모듈
+* Angle
+* Radius
+#### Size over Lifetime 모듈
+* 오른쪽 아래로 향하는 곡선
+
+### 3. shock1_alpha(충격파)
+#### 머터리얼 설정
+* Render 모듈의 Material 속성에 eff_shock1_alpha 할당.
+* Render Mode > Mesh > cone1
+#### Main 모듈
+* Start Lifetime
+* Start Speed
+* Start Size
+* Start Rotation
+#### Emission 모듈
+* Rate > Time
+#### Shape 모듈
+* 체크해제
+#### Color over Lifetime 모듈
+#### Size over Lifetime 모듈
+* 오른쪽 위로 향하는 곡선
 </div>
 </details>
