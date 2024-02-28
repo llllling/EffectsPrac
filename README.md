@@ -141,7 +141,30 @@
     </tr>
 </table>
 
-## 자연 표현 이펙트 연습
+#### UV 스크롤
+* 텍스처의 UV를 이동시키는 것
+* UV 애니메이션 또는 텍스처 애니메이션이라고도 함.
+* **UV 좌표** 
+    * 텍스처는 평면 또는 메시 모델에 적용해서 사용한다. 
+    * 이때 텍스처를 어떻게 평면 또는 메시의 어떤 위치에 추가할지를 나타내는 정보를 UV 좌표라고 함.
+* UV 스크롤을 사용하면 다양한 이펙트 표현할 수 있다.
+```c#
+public class UvScroll : MonoBehaviour {
+	
+	public float scrollSpeed_u = 0.5F;
+	public float scrollSpeed_v = 0.5F;
+	private Renderer rend;
+	void Start() {
+		rend = GetComponent<Renderer>();
+	}
+	void Update() {
+		float offset_u = Time.time * - scrollSpeed_u;
+		float offset_v = Time.time * - scrollSpeed_v; 
+		rend.material.SetTextureOffset("_MainTex", new Vector2(offset_u, offset_v));
+	}
+}
+```
+## 자연 표현 이펙트
 NatureEffects 폴더
 <details>
 <summary><h2> 화염 이펙트 </h2></summary>
@@ -573,5 +596,40 @@ NatureEffects 폴더
 #### Size over Lifetime 모듈
 * Particle System Curves에서 오른쪽 아래로 향하는 직선을 선택
 
+</div>
+</details>
+
+
+## 캐릭터에 적용하는 이펙트
+CharacterEffect 폴더
+<details>
+<summary><h2> 흙먼지 이펙트 </h2></summary>
+<div>
+
+### 1. smoke1_alpha
+#### 머터리얼 설정
+* Render 모듈의 Material 속성에 eff_smoke1_alpha 할당.
+#### Main 모듈
+* Start Lifetime
+* Start Speed
+* Start Size
+* Start Rotation
+* Gravity Modifier
+* Start Color
+#### Transform 변경 
+* 부모 Eff_Dust의 Transform 변경 => 타이어에서 흙먼지가 발생하도록 위치 변경
+* smoke1_alpha의 Rotation -90, 0, 0으로변경 => 연기가 위로 발생할 수 있게 
+#### Emission 모듈
+* Rate > Time
+#### Shape 모듈
+* Radius
+### Velocity over Lifetime 모듈 
+* Y ( 5 ~ 0 ) => 흙먼지가 뒤(Y축 +) 방향으로 흐르게 
+#### Color over Lifetime 모듈
+* Alpha  => 흙먼지가 페이드아웃하며 사라지도록
+    * 255, 0%
+    * 0, 100%
+#### Size over Lifetime 모듈
+* 오른쪽 위로 향하는 직선, 왼쪽 key 값 0.746
 </div>
 </details>
